@@ -72,7 +72,8 @@ public class App {
     }
 
     public static List<Integer> getCambridgeTransactionsValue(List<Transaction> transactions) {
-        return Collections.emptyList();
+        return transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                .map(Transaction::getValue).collect(Collectors.toList());
     }
 
     public static int getMaxTransactionValue(List<Transaction> transactions) {
