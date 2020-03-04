@@ -76,7 +76,7 @@ public class App {
     }
 
     public static int getMaxTransactionValue(List<Transaction> transactions) {
-        return transactions.stream().mapToInt(Transaction::getValue).max().getAsInt();
+        return transactions.stream().mapToInt(Transaction::getValue).max().orElse(-1);
     }
 
     public static Transaction getMinTransaction(List<Transaction> transactions) {
