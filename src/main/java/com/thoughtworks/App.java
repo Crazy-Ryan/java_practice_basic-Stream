@@ -80,6 +80,6 @@ public class App {
     }
 
     public static Transaction getMinTransaction(List<Transaction> transactions) {
-        return null;
+        return transactions.stream().min(Comparator.comparingInt(Transaction::getValue)).get();
     }
 }
