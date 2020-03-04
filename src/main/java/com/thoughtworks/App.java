@@ -68,7 +68,7 @@ public class App {
     }
 
     public static boolean hasMilanTrader(List<Transaction> transactions) {
-        return false;
+        return transactions.stream().map(Transaction::getTrader).anyMatch(trader -> trader.getCity().equals("Milan"));
     }
 
     public static List<Integer> getCambridgeTransactionsValue(List<Transaction> transactions) {
