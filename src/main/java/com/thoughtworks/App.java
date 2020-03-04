@@ -47,11 +47,13 @@ public class App {
     }
 
     public static List<Transaction> get2011Transactions(List<Transaction> transactions) {
-        return transactions.stream().filter(transaction -> 2011 == transaction.getYear()).sorted(Comparator.comparingInt(Transaction::getValue)).collect(Collectors.toList());
+        return transactions.stream().filter(transaction -> 2011 == transaction.getYear())
+                .sorted(Comparator.comparingInt(Transaction::getValue)).collect(Collectors.toList());
     }
 
     public static List<String> getTradersCity(List<Transaction> transactions) {
-        return Collections.emptyList();
+        return transactions.stream().map(Transaction::getTrader)
+                .map(Trader::getCity).distinct().collect(Collectors.toList());
     }
 
     public static List<Trader> getCambridgeTraders(List<Transaction> transactions) {
