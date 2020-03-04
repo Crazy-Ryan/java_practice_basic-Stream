@@ -1,7 +1,6 @@
 package com.thoughtworks;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,7 +76,7 @@ public class App {
     }
 
     public static int getMaxTransactionValue(List<Transaction> transactions) {
-        return 0;
+        return transactions.stream().mapToInt(Transaction::getValue).max().getAsInt();
     }
 
     public static Transaction getMinTransaction(List<Transaction> transactions) {
