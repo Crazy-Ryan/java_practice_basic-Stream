@@ -57,7 +57,7 @@ public class App {
 
     public static List<Trader> getCambridgeTraders(List<Transaction> transactions) {
         return transactions.stream().map(Transaction::getTrader).distinct()
-                .filter(trader -> trader.getCity().equals("Cambridge"))
+                .filter(trader -> "Cambridge".equals(trader.getCity()))
                 .sorted(Comparator.comparing(Trader::getName)).collect(Collectors.toList());
     }
 
@@ -67,11 +67,11 @@ public class App {
     }
 
     public static boolean hasMilanTrader(List<Transaction> transactions) {
-        return transactions.stream().map(Transaction::getTrader).anyMatch(trader -> trader.getCity().equals("Milan"));
+        return transactions.stream().map(Transaction::getTrader).anyMatch(trader -> "Milan".equals(trader.getCity()));
     }
 
     public static List<Integer> getCambridgeTransactionsValue(List<Transaction> transactions) {
-        return transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+        return transactions.stream().filter(transaction -> "Cambridge".equals(transaction.getTrader().getCity()))
                 .map(Transaction::getValue).collect(Collectors.toList());
     }
 
